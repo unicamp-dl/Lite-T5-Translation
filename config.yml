@@ -1,0 +1,10 @@
+#Translator Configuration File
+
+# Hyperparameters
+batch_size: 4
+accumulate_grad_batches: 64
+source_max_length: 96
+target_max_length: 160
+learning_rate: 5e-3
+max_epochs: 1
+model_name: "t5-base"
