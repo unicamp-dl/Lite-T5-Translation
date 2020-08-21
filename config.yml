@@ -3,8 +3,13 @@
 # Hyperparameters
 batch_size: 4
 accumulate_grad_batches: 64
-source_max_length: 96
-target_max_length: 160
+source_max_length: 256
+target_max_length: 256
 learning_rate: 0.005
 max_epochs: 1
-model_name: "t5-base"
+
+#model_name: "t5-base"
+
+# if portuguese_pretrained is true, change model name to:
+model_name: "unicamp-dl/ptt5-base-portuguese-vocab"
+portuguese_pretrained: True
