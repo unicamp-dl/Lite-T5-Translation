@@ -1,7 +1,7 @@
 import sacrebleu
 from transformers import T5ForConditionalGeneration
 from torch.utils.data import DataLoader
-from data import create_preprocessing_tokenizer, T5Dataset
+from data import create_adapted_tokenizer, T5Dataset
 import pytorch_lightning as pl
 import config
 import torch
@@ -54,6 +54,7 @@ class T5FineTuner(pl.LightningModule):
         self._val_dataloader = val_dataloader
         self._test_dataloader = test_dataloader
         model_name = config.get_model_name()
+        self.is_ptt5 = config.get_ptt5_checker()
         self.model = T5ForConditionalGeneration.from_pretrained(model_name)
         self.added_tokens = added_tokens
         self.training = False
@@ -92,7 +93,11 @@ class T5FineTuner(pl.LightningModule):
     def validation_step(self, batch, batch_nb):
         source_token_ids, source_mask, target_token_ids, target_mask, source, refs = batch
         predict = self(source_token_ids, source_mask).permute(0, 1)
-        sys = [fix_accent_breaks(self.tokenizer.decode(tokens), self.added_tokens) for tokens in predict]
+
+        if self.is_ptt5:
+            sys = [self.tokenizer.decode(tokens) for tokens in predict]
+        else:
+            sys = [fix_accent_breaks(self.tokenizer.decode(tokens), self.added_tokens) for tokens in predict]
 
         progress_bar = {'gpu_usage': 100}
         return {'pred': sys, 'target': refs, 'progress_bar': progress_bar}
@@ -100,7 +105,11 @@ class T5FineTuner(pl.LightningModule):
     def test_step(self, batch, batch_nb):
         source_token_ids, source_mask, target_token_ids, target_mask, source, refs = batch
         predict = self(source_token_ids, source_mask).permute(0, 1)
-        sys = [fix_accent_breaks(self.tokenizer.decode(tokens), self.added_tokens) for tokens in predict]
+
+        if self.is_ptt5:
+            sys = [self.tokenizer.decode(tokens) for tokens in predict]
+        else:
+            sys = [fix_accent_breaks(self.tokenizer.decode(tokens), self.added_tokens) for tokens in predict]
 
         progress_bar = {'gpu_usage': 100}
         return {'pred': sys, 'target': refs, 'progress_bar': progress_bar}
@@ -142,7 +151,7 @@ def create_model(x_train, x_val, x_test):
     model_name = config.get_model_name()
     target_max_length = config.get_target_max_length()
     source_max_length = config.get_source_max_length()
-    tokenizer, added_tokens = create_preprocessing_tokenizer(model_name)
+    tokenizer, added_tokens = create_adapted_tokenizer(model_name)
 
     dataset_train = T5Dataset(text_pairs=x_train,
                               tokenizer=tokenizer,

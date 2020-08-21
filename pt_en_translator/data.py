@@ -38,7 +38,7 @@ class T5Dataset(Dataset):
                 target_tok['attention_mask'][0], source, target)
 
 
-def create_preprocessing_tokenizer(model_name):
+def create_adapted_tokenizer(model_name):
     tokenizer = T5Tokenizer.from_pretrained(model_name)
 
     for word in WORDS:
@@ -52,3 +52,10 @@ def create_preprocessing_tokenizer(model_name):
             tokenizer.add_tokens(tok)
 
     return tokenizer, added_tokens
+
+
+def create_ptt5_tokenizer():
+    model_name = 'unicamp-dl/ptt5-base-portuguese-vocab'
+    tokenizer = T5Tokenizer.from_pretrained(model_name)
+
+    return tokenizer
