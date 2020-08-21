@@ -30,12 +30,51 @@ class PredictModel:
 
         return sys
 
+
+    def predict_batch_pt_en(self, text_list):
+        max_length = config.get_source_max_length()
+        is_ptt5 = config.get_ptt5_checker()
+        sent_list=[]
+
+        for text in text_list:
+            sent_list.append("translate Portuguese to English: " + text + self.tokenizer.eos_token)
+
+        tok = self.tokenizer.batch_encode_plus(sent_list, return_tensors='pt', add_special_tokens=True, max_length=max_length, pad_to_max_length = True)
+        pred = self.model(tok['input_ids'].to(self.device), tok['attention_mask'].to(self.device))
+        
+        if is_ptt5:
+            sys = [self.tokenizer.decode(tokens) for tokens in pred]
+        else:
+            sys = [fix_accent_breaks(self.tokenizer.decode(tokens), self.added_tokens) for tokens in pred]
+
+        return sys
+
+
     def predict_en_pt(self, text):
         max_length = config.get_source_max_length()
         is_ptt5 = config.get_ptt5_checker()
 
         sent = "translate English to Portuguese: " + text + self.tokenizer.eos_token
         tok = self.tokenizer.encode_plus(sent, return_tensors='pt', add_special_tokens=True, max_length=max_length, pad_to_max_length = True)
+        pred = self.model(tok['input_ids'].to(self.device), tok['attention_mask'].to(self.device))
+
+        if is_ptt5:
+            sys = [self.tokenizer.decode(tokens) for tokens in pred]
+        else:
+            sys = [fix_accent_breaks(self.tokenizer.decode(tokens), self.added_tokens) for tokens in pred]
+
+        return sys
+
+
+    def predict_batch_en_pt(self, text_list):
+        max_length = config.get_source_max_length()
+        is_ptt5 = config.get_ptt5_checker()
+        sent_list=[]
+
+        for text in text_list:
+            sent_list.append("translate English to Portuguese: " + text + self.tokenizer.eos_token)
+
+        tok = self.tokenizer.batch_encode_plus(sent_list, return_tensors='pt', add_special_tokens=True, max_length=max_length, pad_to_max_length = True)
         pred = self.model(tok['input_ids'].to(self.device), tok['attention_mask'].to(self.device))
 
         if is_ptt5:
