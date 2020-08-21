@@ -58,6 +58,20 @@ We want to pre-train data in portuguese and english dataset together using a new
 
 If you want to contribute to this work or team up with me for some other task (or other challenge in Translation), let me know! Feel free to create issues and share your comments!
 
+
+## Citation
+
+For now, we have a paper you can cite in arxiv:
+```bibtex
+@misc{alex2020lite,
+    title={Lite Training Strategies for Portuguese-English and English-Portuguese Translation},
+    author={Alexandre Lopes and Rodrigo Nogueira and Roberto Lotufo and Helio Pedrini},
+    year={2020},
+    eprint={2008.08769},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
+}
+```
 ## References
 
 [1] Colin  Raffel,   Noam  Shazeer,   Adam  Roberts,   Katherine  Lee,   SharanNarang, Michael Matena, Yanqi Zhou, Wei Li, and Peter J Liu.  Exploring the limits of transfer learning with a unified text-to-text transformer.arXivpreprint arXiv:1910.10683, 2019
