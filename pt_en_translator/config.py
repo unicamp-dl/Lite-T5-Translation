@@ -61,3 +61,13 @@ def get_model_name():
         raise IndexError("model name must not be empty in configuration file")
 
     return algs
+
+
+def get_ptt5_checker():
+    algs = parsed_yaml_file['portuguese_pretrained']
+    if algs is None:
+        raise IndexError("model name must not be empty in configuration file")
+
+    return algs
+
+
