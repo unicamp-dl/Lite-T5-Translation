@@ -35,7 +35,7 @@ mecab-python3==0.996.5
 mistune==0.8.4
 nbconvert==5.6.1
 nbformat==5.0.7
-notebook==6.0.3
+notebook==6.1.5
 numpy==1.19.0
 oauthlib==3.1.0
 packaging==20.4
