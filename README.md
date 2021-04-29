@@ -13,6 +13,8 @@ Another important contribution of this repository is the creation a corpus calle
 
 ## Instalation and Usage
 
+We used Python 3.8 for the experiments. Probably 3.7 should be fine too, but I cannot garantee any other version. I sugest using Python 3.8.
+
 To install it, just run 'pip install -r requirements.txt'
 
 It you want to train it, make sure you have a 8GB GPU or change the batch sizes and train it again. On CPU it should work well for evaluating, but it must be time consuming for training. I did not try it.
