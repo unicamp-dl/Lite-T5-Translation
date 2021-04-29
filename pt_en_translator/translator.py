@@ -20,7 +20,7 @@ class PredictModel:
         is_ptt5 = config.get_ptt5_checker()
 
         sent = "translate Portuguese to English: " + text + self.tokenizer.eos_token
-        tok = self.tokenizer.encode_plus(sent, return_tensors='pt', add_special_tokens=True, max_length=max_length, pad_to_max_length = True)
+        tok = self.tokenizer.encode_plus(sent, return_tensors='pt', add_special_tokens=True, truncation=True, max_length=max_length, pad_to_max_length = True)
         pred = self.model(tok['input_ids'].to(self.device), tok['attention_mask'].to(self.device))
         
         if is_ptt5:
@@ -39,7 +39,7 @@ class PredictModel:
         for text in text_list:
             sent_list.append("translate Portuguese to English: " + text + self.tokenizer.eos_token)
 
-        tok = self.tokenizer.batch_encode_plus(sent_list, return_tensors='pt', add_special_tokens=True, max_length=max_length, pad_to_max_length = True)
+        tok = self.tokenizer.batch_encode_plus(sent_list, return_tensors='pt', truncation=True, add_special_tokens=True, max_length=max_length, pad_to_max_length = True)
         pred = self.model(tok['input_ids'].to(self.device), tok['attention_mask'].to(self.device))
         
         if is_ptt5:
@@ -55,7 +55,7 @@ class PredictModel:
         is_ptt5 = config.get_ptt5_checker()
 
         sent = "translate English to Portuguese: " + text + self.tokenizer.eos_token
-        tok = self.tokenizer.encode_plus(sent, return_tensors='pt', add_special_tokens=True, max_length=max_length, pad_to_max_length = True)
+        tok = self.tokenizer.encode_plus(sent, return_tensors='pt', add_special_tokens=True, truncation=True, max_length=max_length, pad_to_max_length = True)
         pred = self.model(tok['input_ids'].to(self.device), tok['attention_mask'].to(self.device))
 
         if is_ptt5:
@@ -74,7 +74,7 @@ class PredictModel:
         for text in text_list:
             sent_list.append("translate English to Portuguese: " + text + self.tokenizer.eos_token)
 
-        tok = self.tokenizer.batch_encode_plus(sent_list, return_tensors='pt', add_special_tokens=True, max_length=max_length, pad_to_max_length = True)
+        tok = self.tokenizer.batch_encode_plus(sent_list, return_tensors='pt', add_special_tokens=True, truncation=True, max_length=max_length, pad_to_max_length = True)
         pred = self.model(tok['input_ids'].to(self.device), tok['attention_mask'].to(self.device))
 
         if is_ptt5:
