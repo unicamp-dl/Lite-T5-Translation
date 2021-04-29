@@ -6,7 +6,6 @@ cachetools==4.1.1
 certifi==2020.6.20
 chardet==3.0.4
 click==7.1.2
-dataclasses==0.7
 decorator==4.4.2
 defusedxml==0.6.0
 entrypoints==0.3
@@ -16,12 +15,11 @@ google-auth==1.18.0
 google-auth-oauthlib==0.4.1
 grpcio==1.30.0
 idna==2.10
-importlib-metadata @ file:///tmp/build/80754af9/importlib-metadata_1593446433964/work
+importlib-metadata==1.7.0
 ipykernel==5.3.0
-ipython @ file:///tmp/build/80754af9/ipython_1593447367857/work
 ipython-genutils==0.2.0
 ipywidgets==7.5.1
-jedi @ file:///tmp/build/80754af9/jedi_1592841914522/work
+jedi==0.16.0
 Jinja2==2.11.2
 joblib==0.16.0
 jsonschema==3.2.0
@@ -57,7 +55,6 @@ python-dateutil==2.8.1
 pytorch-lightning==0.7.6
 PyYAML==5.3.1
 pyzmq==19.0.1
-qtconsole @ file:///tmp/build/80754af9/qtconsole_1592848611704/work
 QtPy==1.9.0
 regex==2020.6.8
 requests==2.24.0
@@ -79,7 +76,7 @@ tqdm==4.47.0
 traitlets==4.3.3
 transformers==3.0.1
 urllib3==1.25.9
-wcwidth @ file:///tmp/build/80754af9/wcwidth_1593447189090/work
+wcwidth==0.1.9 
 webencodings==0.5.1
 Werkzeug==1.0.1
 widgetsnbextension==3.5.1
