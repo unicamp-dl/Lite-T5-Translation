@@ -63,13 +63,19 @@ If you want to contribute to this work or team up with me for some other task (o
 
 For now, we have a paper you can cite in arxiv:
 ```bibtex
-@misc{alex2020lite,
-    title={Lite Training Strategies for Portuguese-English and English-Portuguese Translation},
-    author={Alexandre Lopes and Rodrigo Nogueira and Roberto Lotufo and Helio Pedrini},
-    year={2020},
-    eprint={2008.08769},
-    archivePrefix={arXiv},
-    primaryClass={cs.CL}
+@inproceedings{lopes-etal-2020-lite,
+    title = "Lite Training Strategies for {P}ortuguese-{E}nglish and {E}nglish-{P}ortuguese Translation",
+    author = "Lopes, Alexandre  and
+      Nogueira, Rodrigo  and
+      Lotufo, Roberto  and
+      Pedrini, Helio",
+    booktitle = "Proceedings of the Fifth Conference on Machine Translation",
+    month = nov,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.wmt-1.90",
+    pages = "833--840",
 }
 ```
 ## References
