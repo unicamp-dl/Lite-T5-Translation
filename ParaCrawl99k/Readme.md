@@ -11,9 +11,10 @@ Therefore, if you want to test your own algorithm, just evaluate the first eleme
 
 Example of tuple in ParaCrawl99K_PtEn_PCrawlGoogleT.pkl:
 
+```
 ('E estou certo de que esse anseio pela democracia possa favorecer também os cristãos”.',
  'And I am sure that this yearning for democracy can also benefit Christians ”.')
-
+```
 
 ## License
 
